@@ -11,9 +11,16 @@
         WindowStartupLocation="CenterScreen">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
             <Label Name="WelcomeLabel" Content="Welcome"  VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman"/>
-            <TextBox Name="LoginTextBox" Width="150" Watermark="Login" HorizontalContentAlignment="Center" FontFamily="Times New Roman"/>
-            <TextBox Name="PasswordTextBox" Width="150" Watermark="Password" HorizontalContentAlignment="Center" Margin="0 10 0 0" FontFamily="Times New Roman"/>
-            <Button Name="LoginButton" Width="150" Content="Login" Background="Gray" HorizontalContentAlignment="Center" Margin="0 10 0 0" FontFamily="Times New Roman" />
-            <Label Name="RegisterLabel" Content="Register"  VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" Tapped="RegisterLabel_OnTapped"/>
+            <TextBox Name="LoginTextBox" Width="170" Watermark="Login" HorizontalContentAlignment="Center" FontFamily="Times New Roman"/>
+            <TextBox Name="PasswordTextBox" Width="170" Watermark="Password" HorizontalContentAlignment="Center" Margin="0 10 0 10" FontFamily="Times New Roman"/>
+            <Button Name="LoginButton" Width="170" Content="Login" Background="Gray" HorizontalContentAlignment="Center" Margin="0 0 0 0"  FontFamily="Times New Roman" Click="LoginButton_OnClick" />
+            <Label Name="GuestLabel" Content="Login like Guest" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Times New Roman" Tapped="GuestLabel_OnTapped"></Label>
+            
+            <StackPanel x:Name="WrongPanel"  Background="White" VerticalAlignment="Center" HorizontalAlignment="Center" IsVisible="False">
+                <Label Content="Wrong password or login" FontFamily="Times New Roman" FontSize="16" Foreground="Black" ></Label>
+                <Image x:Name="CaptchaImage" ></Image>
+                <TextBox x:Name="CapchaBox"></TextBox>
+            </StackPanel>
+            
         </StackPanel>
 </Window>
