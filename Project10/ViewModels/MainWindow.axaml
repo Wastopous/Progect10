@@ -7,10 +7,47 @@
         Title="Shop">
         <StackPanel>
         <Button Name="QuitButton" Margin="1 0 1 1" Height="35" Width="" FontSize="20" FontFamily="Times New Roman" Click="QuitButton_OnClick" Content= ""/>
-        <Grid >
-                <DataGrid></DataGrid>
-        </Grid>
-        
-                
+    <Panel Name="Panel">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="5">
+            <Button Name="AddButton" Content="Добавить"  Margin="5" />
+            <Button Name="DeleteButton" Content="Удалить"  Margin="5" />
+            <TextBlock Text="Поиск:" Margin="5 12 5 0"/>
+            <TextBox Name="SearchTBox" Width="200" Margin="5" />
+        </StackPanel>
+        <Grid>
+        <ListBox Name="LBoxProducts" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Margin="5" HorizontalAlignment="Left" VerticalAlignment="Center" Stretch="UniformToFill" Width="200" Height="150" x:CompileBindings="False">
+                            <Image.Source>
+                                <Binding Path="ImagePreview" Converter="{StaticResource ImageConverter}">
+                                    <Binding.TargetNullValue>
+                                        <Image Source="/Captcha/cp1.jpg"/>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock Grid.Column="1" Margin="5" x:CompileBindings="False" Text="{Binding ProductName}" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="1" x:CompileBindings="False" Text="{Binding Description}" Margin="5 30 0 0" TextWrapping="Wrap"/>
+                        <TextBlock Grid.Column="1" Name="ProducerTBlock" x:CompileBindings="False" Text="{Binding Producer, StringFormat=Производитель: {0}}" Margin="5 60 0 0 "></TextBlock>
+                        <TextBlock Grid.Column="1" x:CompileBindings="False" Text="{Binding Price, StringFormat={}{0:C}}" Margin="5 90 0 0"></TextBlock>
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" x:CompileBindings="False" Text="{Binding Amount}" FontSize="30" ></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+    </DockPanel>
+    </Panel>
         </StackPanel>
 </Window>

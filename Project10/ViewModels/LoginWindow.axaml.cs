@@ -13,7 +13,7 @@ namespace Project10;
 public partial class LoginWindow : Window
 {
     private DataBase _dataBase = new DataBase();
-    
+
 
     public LoginWindow()
     {
@@ -22,37 +22,34 @@ public partial class LoginWindow : Window
 
     }
 
+
     private void GuestLabel_OnTapped(object? sender, TappedEventArgs e)
     {
         MainWindow mainWindow = new MainWindow();
         mainWindow.Show();
     }
 
+
     private void LoginButton_OnClick(object? sender, RoutedEventArgs e)
     {
+  
+        string login = LoginTextBox.Text;
+        string password = PasswordTextBox.Text;
 
-        using (MySqlConnection connection = new MySqlConnection())
+        DataTable table = new DataTable();
+        MySqlDataAdapter adapter = new MySqlDataAdapter();
+        string sql = "select * from user where login = @login and password = @password";
+
+        MySqlCommand command = new MySqlCommand(sql, _dataBase.GetConnection());
+        command.Parameters.Add("@login", MySqlDbType.VarChar).Value = login;
+        command.Parameters.Add("@password", MySqlDbType.VarChar).Value = password;
+        adapter.SelectCommand = command;
+        adapter.Fill(table);
+        if (table.Rows.Count > 0)
         {
-            connection.Open();
-            
-            string query = "SELECT COUNT(*) FROM user WHERE login = @login and password = @password";
-            using (MySqlCommand cmd = new MySqlCommand(query, connection))
-            {
-                cmd.Parameters.AddWithValue("@login", LoginTextBox.Text);
-                cmd.Parameters.AddWithValue("@password", PasswordTextBox.Text);
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
+            MainWindow mainWindow = new MainWindow();
 
-                if (count > 0)
-                {
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
-                }
-                else
-                {
-                    WrongPanel.IsVisible = true;
-                }
-
-            }
+            mainWindow.Show();
         }
     }
 }
