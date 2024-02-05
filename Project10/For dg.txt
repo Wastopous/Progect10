@@ -14,50 +14,50 @@ create table point
 
 create table producer
 (
-    ProducerID int auto_increment
+    ProducerID   int auto_increment
         primary key,
-    Producer   varchar(255) null
+    ProducerName varchar(255) null
 );
 
 create table provider
 (
-    ProviderID int auto_increment
+    ProviderID   int auto_increment
         primary key,
-    Provider   varchar(255) null
+    ProviderName varchar(255) null
 );
 
-create table goods
+create table good
 (
-    GoodsID    int auto_increment
+    GoodID    int auto_increment
         primary key,
-    GoodsName  varchar(255)  null,
-    GoodsDesc  varchar(255)  null,
-    GoodsCount int           null,
-    GoodsPrice decimal(8, 2) null,
-    Provider   int           null comment 'Поставщик',
-    Producer   int           null comment 'Производитель',
-    Category   int           null comment 'Категория',
-    constraint goods_category_CategoryID_fk
+    GoodName  varchar(255)  null,
+    GoodDesc  varchar(255)  null,
+    GoodCount int           null,
+    GoodPrice decimal(8, 2) null,
+    Provider  int           null comment 'Поставщик',
+    Producer  int           null comment 'Производитель',
+    Category  int           null comment 'Категория',
+    constraint good_category_CategoryID_fk
         foreign key (Category) references category (CategoryID),
-    constraint goods_producer_ProducerID_fk
+    constraint good_producer_ProducerID_fk
         foreign key (Producer) references producer (ProducerID),
-    constraint goods_provider_ProviderID_fk
+    constraint good_provider_ProviderID_fk
         foreign key (Provider) references provider (ProviderID)
 )
     comment 'Товары';
 
 create table role
 (
-    RoleID int auto_increment
+    RoleID   int auto_increment
         primary key,
-    Role   varchar(255) null
+    RoleName varchar(255) null
 );
 
 create table status
 (
-    StatusID int auto_increment
+    StatusID   int auto_increment
         primary key,
-    Status   varchar(255) null
+    StatusName varchar(255) null
 );
 
 create table user
@@ -65,7 +65,7 @@ create table user
     UserID   int auto_increment
         primary key,
     Role     int          null,
-    Name     varchar(255) null,
+    UserName varchar(255) null,
     Login    varchar(255) null,
     Password varchar(255) null,
     constraint user_role_RoleID_fk
@@ -74,16 +74,16 @@ create table user
 
 create table `order`
 (
-    OrderID         int auto_increment
+    OrderID      int auto_increment
         primary key,
-    OrderDate       date null,
-    OrderArriveDate date null,
-    User            int  null,
-    Status          int  null,
-    Point           int  null,
-    Goods           int  null,
+    OrderDate    date null,
+    DeliveryDate date null,
+    User         int  null,
+    Status       int  null,
+    Point        int  null,
+    Good         int  null,
     constraint order_goods_GoodsID_fk
-        foreign key (Goods) references goods (GoodsID),
+        foreign key (Good) references good (GoodID),
     constraint order_point_PointID_fk
         foreign key (Point) references point (PointID),
     constraint order_status_StatusID_fk
@@ -91,4 +91,3 @@ create table `order`
     constraint order_user_UserID_fk
         foreign key (User) references user (UserID)
 );
-
