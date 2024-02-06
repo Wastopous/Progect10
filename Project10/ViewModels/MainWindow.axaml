@@ -13,10 +13,10 @@
             <Button Name="AddButton" Content="Добавить"  Margin="5" />
             <Button Name="DeleteButton" Content="Удалить"  Margin="5" />
             <TextBlock Text="Поиск:" Margin="5 12 5 0"/>
-            <TextBox Name="SearchTBox" Width="200" Margin="5" />
+            <TextBox Name="Search" Width="200" Margin="5" />
         </StackPanel>
         <Grid>
-        <ListBox Name="LBoxProducts" >
+        <ListBox Name="GoodListBox" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -32,7 +32,7 @@
                             <Image.Source>
                                 <Binding Path="ImagePreview" Converter="{StaticResource ImageConverter}">
                                     <Binding.TargetNullValue>
-                                        <Image Source="/Captcha/cp1.jpg"/>
+                                        <Image Source=""/>
                                     </Binding.TargetNullValue>
                                 </Binding>
                             </Image.Source>
