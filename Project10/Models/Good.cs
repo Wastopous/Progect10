@@ -9,7 +9,7 @@ public class Good
     public string GoodDesc { get; set; } = String.Empty;
     public decimal GoodPrice { get; set; }  
     public int GoodCount { get; set; }
-    public int Provider { get; set; }
-    public int Producer { get; set; }
-    public int Category { get; set; }
+    public string Provider { get; set; }
+    public string Producer { get; set; }
+    public string Category { get; set; }
 }

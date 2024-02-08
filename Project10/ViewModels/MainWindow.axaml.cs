@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -58,4 +59,24 @@ public partial class MainWindow : Window
         GoodListBox.ItemsSource = _goods;
     }
     
+
+
+    private void Search_OnTextChanged(object? sender, TextChangedEventArgs e)
+    {
+        ObservableCollection<Good> search =
+            new ObservableCollection<Good>(_goods.Where(x =>
+                x.GoodName.ToLower().Contains(Search.Text.ToLower())));
+        GoodListBox.ItemsSource = search;
+    }
+
+    private void AddButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+        Good selectedGood = GoodListBox.SelectedItem as Good;
+        if (selectedGood != null)
+        {
+            Panel.Children.Clear();
+            AddGood addProductPage = new AddGood(selectedGood);
+            Panel.Children.Add(addProductPage);
+        }
+    }   
 }
