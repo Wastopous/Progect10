@@ -1,0 +1,37 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+        x:Class="Project10.RedGood"
+        Title="RedGood">
+  <Panel Name="Panel">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <TextBox Watermark="Name" FontFamily="Times New Roman" Width="200" Height="20" Name="NameTBox" Margin="10"></TextBox>
+            <ComboBox   Width="200" Height="20" Name="CategoryCmb" Margin="10"  />
+            <Label Name="CLabel" Foreground="Gray" HorizontalAlignment="Center" Margin="-85 -37 0 0" FontFamily="Times New Roman"> Category</Label>
+            <ComboBox  Width="200" Height="20" Name="SupplierCmb" Margin="10" />
+            <Label Name="SLabel" Foreground="Gray" HorizontalAlignment="Center" Margin="-85 -37 0 0" FontFamily="Times New Roman"> Supplier</Label>
+            <ComboBox Width="200" Height="20" Name="ProducerCmb" Margin="10"/>
+            <Label Name="PLabel" Foreground="Gray" HorizontalAlignment="Center" Margin="-85 -37 0 0" FontFamily="Times New Roman"> Producer</Label>
+            <TextBox Watermark="Amount" Width="200" Height="20" Name="AmountTBox" Margin="10" FontFamily="Times New Roman"/>
+            <TextBox Width="200" Watermark="Price" Height="20" Name="PriceTBox" Margin="10" FontFamily="Times New Roman"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <TextBox Watermark="Description" Width="200" Height="20" Name="DescriptionTBox" AcceptsReturn="True" TextWrapping="Wrap" Margin="10" FontFamily="Times New Roman"/>
+            <Button Name="BackButton" Height="25" Width="140" HorizontalContentAlignment="Center" Content="Back" HorizontalAlignment="Center" FontWeight="Bold" Background="White" Foreground="Black" FontFamily="Times New Roman" Margin="5" />
+            <Button Name="SaveButton" Height="25" Width="140" HorizontalContentAlignment="Center" Content="Save" HorizontalAlignment="Center" FontWeight="Bold" Background="White" Foreground="Black" FontFamily="Times New Roman" />
+        </StackPanel>
+    </Grid>
+    </Panel>
+</Window>

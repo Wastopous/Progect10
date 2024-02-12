@@ -30,9 +30,10 @@ public partial class MainWindow : Window
 
     private void QuitButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        this.Close();
+
         LoginWindow loginWindow = new LoginWindow();
-        Show(s);
+        loginWindow.Show();
+        this.Close();
     }
 
     public void Show(string _s)

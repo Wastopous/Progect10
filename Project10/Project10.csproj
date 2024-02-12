@@ -27,5 +27,13 @@
         <DependentUpon>LoginWindow.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+      <Compile Update="ViewModels\AddGood.axaml.cs">
+        <DependentUpon>AddGood.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="ViewModels\RedGood.axaml.cs">
+        <DependentUpon>RedGood.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 </Project>

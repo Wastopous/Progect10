@@ -27,6 +27,7 @@ public partial class LoginWindow : Window
     {
         MainWindow mainWindow = new MainWindow();
         mainWindow.Show();
+        this.Close();
     }
 
 
